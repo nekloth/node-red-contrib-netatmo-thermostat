@@ -50,12 +50,12 @@ module.exports = function(RED) {
 
             // mode should one of the list
             if (
-              msg.payload.setpoint_mode != 'program'
-              && msg.payload.setpoint_mode != 'away'
-              && msg.payload.setpoint_mode != 'manual'
-              && msg.payload.setpoint_mode != 'off'
-              && msg.payload.setpoint_mode != 'max'
+                 msg.payload.setpoint_mode != 'away'
               && msg.payload.setpoint_mode != 'hg'
+              && msg.payload.setpoint_mode != 'manual'
+              && msg.payload.setpoint_mode != 'max'
+              && msg.payload.setpoint_mode != 'off'
+              && msg.payload.setpoint_mode != 'program'
             ) {
               throw new Error('The sent setpoint_mode is not correct (should be \'program\', \'away\', \'manual\', \'off\' or \'max\')');
             }
