@@ -1,10 +1,13 @@
 # node-red-contrib-netatmo-thermostat
 A Netatmo thermostat node for Node-Red
 
+This project is more than inspired by the one from @[ssadams11](https://github.com/ssadams11): [ssadams11/node-red-contrib-netatmo](https://github.com/ssadams11/node-red-contrib-netatmo). Thank a lot for the initial help ! :)
+
+
 
 # Nodes information
 
-## get thermostats data
+## Get thermostats data
 
 Once you provided the appropriate credentials, this node will send you back in the payload your thermostats data, as described in the Netatmo documentation: https://dev.netatmo.com/dev/resources/technical/reference/thermostat/getthermostatsdata
 
