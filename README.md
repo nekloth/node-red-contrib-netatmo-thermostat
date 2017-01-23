@@ -78,6 +78,7 @@ All the documentation can be found on Netatmo API reference page: https://dev.ne
 ### Possible mode values
 
 There are 6 possible modes:
+
 1. ```program```: indicates to the termostat to follow the program
 2. ```away```: put your thermostat in AWAY mode (for me 12°C)
 3. ```hg```: lower than *away*, HG means "hors-gel" in french = Frost-guard. It is around 8°C
