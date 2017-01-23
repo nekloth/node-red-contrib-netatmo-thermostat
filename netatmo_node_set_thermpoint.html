@@ -1,0 +1,59 @@
+<!--
+  Copyright 2016 IBM Corp.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+
+
+
+
+<!-- SET THERMPOINT -->
+
+<script type="text/javascript">
+    console.log("registering netatmo set thermpoint");
+    RED.nodes.registerType('set thermpoint',{
+        category: 'Netatmo',
+        color: '#669966',
+        defaults: {
+            name: {value:""},
+            creds: {value:"",type:"NetatmoConfigNode"}
+        },
+        inputs:1,
+        outputs:0,
+        icon: "feed.png",
+        label: function() {
+            return "set thermpoint";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="set thermpoint">
+    <div class="form-row">
+        <label for="node-input-client_id"><i class="icon-tag"></i> Creds</label>
+        <input type="text" id="node-input-creds" placeholder="Add netatmo creds">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="set thermpoint">
+   <p>This node uses the <code>msg.payload</code> value to set the the thermostats data associated with this username and credentials.</p>
+   <p>Here is the parameters list (in <code>msg.payload</code>):
+      <ul>
+        <li><code>device_id</code> (required): your device_id. It can also be retrieved thanks to the node get_thermostats_data.
+        <li><code>module_id</code> (required): your thermostat module id (in case you have several).
+        <li><code>setpoint_mode</code> (required): the mode you want to set. Can be: <code>program</code>, <code>manual</code>, <code>away</code>, <code>off</code> or <code>max</code>.
+        <li><code>setpoint_temp</code> (optional): the manual temperature to set. This parameter is considered only when the setpoint_mode is <code>manual</code>.
+      </ul>
+   </p>
+</script>
