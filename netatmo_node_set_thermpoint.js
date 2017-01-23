@@ -55,6 +55,7 @@ module.exports = function(RED) {
               && msg.payload.setpoint_mode != 'manual'
               && msg.payload.setpoint_mode != 'off'
               && msg.payload.setpoint_mode != 'max'
+              && msg.payload.setpoint_mode != 'hg'
             ) {
               throw new Error('The sent setpoint_mode is not correct (should be \'program\', \'away\', \'manual\', \'off\' or \'max\')');
             }
@@ -66,7 +67,7 @@ module.exports = function(RED) {
 
 
             api.setThermpoint(msg.payload, function(err, status) {
-              console.log("Netatmo API call status : " + status);
+              console.log("setThermpoint > Netatmo API call status : " + status);
               node.send(msg);
             });
 

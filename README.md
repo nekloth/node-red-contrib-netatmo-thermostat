@@ -69,3 +69,21 @@ Once you provided the appropriate credentials, this node will send you back in t
 
 
 ## Set thermopoint
+ This node (with no output) will use the received information in the payload to act on your thermostat:
+ * setting a new mode
+ * setting a manual temperature
+
+All the documentation can be found on Netatmo API reference page: https://dev.netatmo.com/dev/resources/technical/reference/thermostat/setthermpoint
+
+### Possible mode values
+
+There are 6 possible modes:
+1. ```program```: indicates to the termostat to follow the program
+2. ```away```: put your thermostat in AWAY mode (for me 12°C)
+3. ```hg```: lower than *away*, HG means "hors-gel" in french = Frost-guard. It is around 8°C
+4. ```off```: switch off the thermostat
+5. ```max```: set the maximum possible temperature (for a sauna)
+6. ```manual```: enter into manual mode. In that case, the ```payload.setpoint_temp``` parameter will hold the desired temperature.
+
+
+ 

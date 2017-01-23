@@ -44,6 +44,38 @@
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
+    <div class="form-row" style="border-top:1pt dotted gray;">
+        <p style="padding-top: 10px;">
+        <label for="node-input-thermpointmode"><i class="icon-tag"></i> Mode</label>
+        <select id="node-input-thermpointmode" placeholder="Name">
+            <option value="program">program</option>
+            <option value="away">away</option>
+            <option value="hg">hg</option>
+            <option value="off">off</option>
+            <option value="max">max</option>
+            <option value="manual">manual</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-thermpointtemp"><i class="icon-tag"></i> Temperature</label>
+        <input type="text" id="node-input-thermpointtemp" placeholder="manual temperature" DISABLED>
+        <br/>
+        <em>Note</em>: if a value is sent in the payload, this selection will be ignored.
+        <br/>If mode is set to <code>manual</code> and no temperature is set, an error is raised
+        </p>
+    </div>
+    <script>
+    $(function(){
+      $('#node-input-thermpointmode').on('change',function(){
+        if ( $('#node-input-thermpointmode').val() == 'manual') {
+          $('#node-input-thermpointtemp').prop("disabled", false);
+        } else {
+          $('#node-input-thermpointtemp').prop("disabled", true);
+        }
+      });
+
+    });
+    </script>
 </script>
 
 <script type="text/x-red" data-help-name="set thermpoint">
@@ -52,7 +84,7 @@
       <ul>
         <li><code>device_id</code> (required): your device_id. It can also be retrieved thanks to the node get_thermostats_data.
         <li><code>module_id</code> (required): your thermostat module id (in case you have several).
-        <li><code>setpoint_mode</code> (required): the mode you want to set. Can be: <code>program</code>, <code>manual</code>, <code>away</code>, <code>off</code> or <code>max</code>.
+        <li><code>setpoint_mode</code> (required): the mode you want to set. Can be: <code>program</code>, <code>manual</code>, <code>away</code>, <code>hg</code>, <code>off</code> or <code>max</code>.
         <li><code>setpoint_temp</code> (optional): the manual temperature to set. This parameter is considered only when the setpoint_mode is <code>manual</code>.
       </ul>
    </p>

@@ -34,6 +34,7 @@ module.exports = function(RED) {
             };
             var api = new netatmo(auth);
             api.getThermostatsData(function(err, devices) {
+                console.log("getThermostatsData > Netatmo API call status : ok");
                 msg.payload = {devices:devices};
                 node.send(msg);
             });
