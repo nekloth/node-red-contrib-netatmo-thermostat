@@ -31,7 +31,6 @@ module.exports = function(RED) {
             var netatmo = require('netatmo');
 
             var dateFormat = require('dateformat');
-            var now = new Date();
 
             var auth = {
                 "client_id": this.creds.client_id,
