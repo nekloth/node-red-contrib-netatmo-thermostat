@@ -17,4 +17,4 @@ According to the Netatmo documentation, there are 5 different endpoints. Potient
 
 # Readme.md
 - [x] Improve README.md: mentioning sources for instance
-- [ ] imrpove README.md: samples
+- [x] imrpove README.md: samples
