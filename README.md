@@ -82,6 +82,7 @@ If a parameter is set in the node configuration pane *and* in the ```payload``` 
 
 ### ```device_id``` parameter
 > Required
+
 > ```payload``` only
 
 This parameter is required and needs to be set using ```payload.device_id```.
@@ -95,6 +96,7 @@ You can find it by opening the Netatmo web page dedicated to your thermostat ("E
 
 ### ```module_id``` parameter
 > Required
+
 > ```payload``` only
 
 This parameter is required and needs to be set using ```payload.module_id```.
@@ -104,6 +106,7 @@ If, like myself, you have only one relay and one thermostat, you will find the `
 
 ### ```setpoint_mode``` parameter
 > Required
+
 > ```payload``` or node configuration pane
 
 Define the mode for your thermostat: ```setpoint_mode```
@@ -118,6 +121,7 @@ Define the mode for your thermostat: ```setpoint_mode```
 
 ### ```setpoint_temp``` parameter
 > Required when ```setpoint_mode``` is ```manual```
+
 > ```payload``` or node configuration pane
 
 This is the temperature you want to set up. This parameter is required if you ask for a ```manual``` mode. If not sent (```payload``` or node configuration pane) an error is raised.
@@ -125,6 +129,7 @@ This is the temperature you want to set up. This parameter is required if you as
 ### ```setpoint_endtime``` parameter
 
 > Considered only when ```setpoint_mode``` is ```manual``` or ```max```
+
 > ```payload``` or node configuration pane
 
 This parameter is optional but makes sense only when used with mode ```manual``` or ```max```.
