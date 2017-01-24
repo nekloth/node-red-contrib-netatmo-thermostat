@@ -76,6 +76,7 @@ module.exports = function(RED) {
 
             // If manual, a temperature must be set
             if ( msg.payload.setpoint_mode == 'manual' &&  msg.payload.setpoint_temp == null ) {
+              console.log(dateFormat(new Date(), "dd mmm HH:MM:ss") + " - [error] [node-red-contrib-netatmo-thermostat] setThermpoint > Missing temperature parameter");
               throw new Error('If the selected mode is \'manual\', please set a temperature with the setpoint_temp parameter');
             }
 
