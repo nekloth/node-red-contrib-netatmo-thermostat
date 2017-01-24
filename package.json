@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-netatmo-thermostat",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A node-red to interact with Netatmo thermostat",
   "main": "index.js",
   "repository": {
@@ -13,6 +13,8 @@
   },
   "homepage": "https://github.com/nekloth/node-red-contrib-netatmo-thermostat#readme",
   "dependencies": {
+    "dateformat": "^2.0.0",
     "netatmo": "^2.0.0"
-  }
+  },
+  "license": "MIT"
 }
