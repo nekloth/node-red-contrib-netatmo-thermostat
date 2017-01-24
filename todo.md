@@ -13,8 +13,8 @@ According to the Netatmo documentation, there are 5 different endpoints. Potient
 - [x] Include a dropdown list to select the mode
 - [x] Take into account the dropdownlist information \o/
 - [ ] Improve device_id/module_id input (if possible)
-- [ ] Handle the start/end information
+- [x] Handle the endtime information
 
 # Readme.md
-- [x] Improve README.md: citing sources for instance
+- [x] Improve README.md: mentioning sources for instance
 - [ ] imrpove README.md: samples
