@@ -24,7 +24,9 @@
         color: '#669966',
         defaults: {
             name: {value:""},
-            creds: {value:"",type:"NetatmoConfigNode"}
+            creds: {value:"",type:"NetatmoConfigNode"},
+            thermpointmode: {value:"program"},
+            thermpointtemp: {value:""}
         },
         inputs:1,
         outputs:0,
@@ -47,7 +49,7 @@
     <div class="form-row" style="border-top:1pt dotted gray;">
         <p style="padding-top: 10px;">
         <label for="node-input-thermpointmode"><i class="icon-tag"></i> Mode</label>
-        <select id="node-input-thermpointmode" placeholder="Name">
+        <select id="node-input-thermpointmode" placeholder="Mode">
             <option value="program">program</option>
             <option value="away">away</option>
             <option value="hg">hg</option>
@@ -58,7 +60,7 @@
     </div>
     <div class="form-row">
         <label for="node-input-thermpointtemp"><i class="icon-tag"></i> Temperature</label>
-        <input type="text" id="node-input-thermpointtemp" placeholder="manual temperature" DISABLED>
+        <input type="text" id="node-input-thermpointtemp" placeholder="Manual temperature" DISABLED>
         <br/>
         <em>Note</em>: if a value is sent in the payload, this selection will be ignored.
         <br/>If mode is set to <code>manual</code> and no temperature is set, an error is raised

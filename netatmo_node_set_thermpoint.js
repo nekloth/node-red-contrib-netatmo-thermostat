@@ -13,7 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
+
 mustache = require('mustache');
+
+
 module.exports = function(RED) {
     "use strict";
 
@@ -26,6 +29,9 @@ module.exports = function(RED) {
         var node = this;
         this.on('input', function(msg) {
             var netatmo = require('netatmo');
+
+            var dateFormat = require('dateformat');
+            var now = new Date();
 
             var auth = {
                 "client_id": this.creds.client_id,
@@ -40,15 +46,23 @@ module.exports = function(RED) {
 
             // device_id should be there
             if (msg.payload.device_id == null) {
+              console.log(dateFormat(new Date(), "dd mmm HH:MM:ss") + " - [error] [node-red-contrib-netatmo-thermostat] setThermpoint > No device_id set");
               throw new Error('You did not set the device_id');
             }
-
             // module_id should be there
+
             if (msg.payload.module_id == null) {
+              console.log(dateFormat(new Date(), "dd mmm HH:MM:ss") + " - [error] [node-red-contrib-netatmo-thermostat] setThermpoint > No module_id set");
               throw new Error('You did not set the module_id');
             }
 
+
+            if ( msg.payload.setpoint_mode == null ) msg.payload.setpoint_mode = config.thermpointmode;
+            if ( msg.payload.setpoint_temp == null ) msg.payload.setpoint_mode = config.thermpointtemp;
+
             // mode should one of the list
+            //We put it in lowercase
+            msg.payload.setpoint_mode = msg.payload.setpoint_mode.toLowerCase();
             if (
                  msg.payload.setpoint_mode != 'away'
               && msg.payload.setpoint_mode != 'hg'
@@ -57,6 +71,7 @@ module.exports = function(RED) {
               && msg.payload.setpoint_mode != 'off'
               && msg.payload.setpoint_mode != 'program'
             ) {
+              console.log(dateFormat(new Date(), "dd mmm HH:MM:ss") + " - [error] [node-red-contrib-netatmo-thermostat] setThermpoint > Mode not correctly set (uknown)");
               throw new Error('The sent setpoint_mode is not correct (should be \'program\', \'away\', \'manual\', \'off\' or \'max\')');
             }
 
@@ -66,24 +81,22 @@ module.exports = function(RED) {
             }
 
 
+            console.log(dateFormat(new Date(), "dd mmm HH:MM:ss") + " - [info] [node-red-contrib-netatmo-thermostat] setThermpoint > " + msg.payload.setpoint_mode + " - " + msg.payload.setpoint_temp);
+
             api.setThermpoint(msg.payload, function(err, status) {
-              console.log("setThermpoint > Netatmo API call status : " + status);
+              console.log(dateFormat(new Date(), "dd mmm HH:MM:ss") + " - [info] [node-red-contrib-netatmo-thermostat] setThermpoint > " + status);
               node.send(msg);
             });
 
 
             api.on("error", function(error) {
-                console.error('Netatmo threw an error: ' + error);
+                console.error(dateFormat(new Date(), "dd mmm HH:MM:ss") + ' - [error] [node-red-contrib-netatmo-thermostat] setThermpoint >' + error);
             });
 
             api.on("warning", function(warning) {
-                console.error('Netatmo threw a warning: ' + warning);
+                console.error(dateFormat(new Date(), "dd mmm HH:MM:ss") + ' - [warning] [node-red-contrib-netatmo-thermostat] setThermpoint >' + warning);
             });
-
-
-
         });
-
     }
     RED.nodes.registerType("set thermpoint",NetatmoSetThermpoint);
 

@@ -11,7 +11,7 @@ According to the Netatmo documentation, there are 5 different endpoints. Potient
 
 # Node Setthermpoint
 - [x] Include a dropdown list to select the mode
-- [ ] Take into account the dropdownlist information \o/
+- [x] Take into account the dropdownlist information \o/
 - [ ] Improve device_id/module_id input (if possible)
 - [ ] Handle the start/end information
 
