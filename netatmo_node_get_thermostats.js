@@ -26,6 +26,8 @@ module.exports = function(RED) {
         this.on('input', function(msg) {
             var netatmo = require('netatmo');
 
+            var dateFormat = require('dateformat');
+
             var auth = {
                 "client_id": this.creds.client_id,
                 "client_secret": this.creds.client_secret,
@@ -34,10 +36,19 @@ module.exports = function(RED) {
             };
             var api = new netatmo(auth);
             api.getThermostatsData(function(err, devices) {
-                console.log("getThermostatsData > Netatmo API call status : ok");
+                console.log(dateFormat(new Date(), "dd mmm HH:MM:ss") + " - [info] [node-red-contrib-netatmo-thermostat] getThermostatsData > OK");
                 msg.payload = {devices:devices};
                 node.send(msg);
             });
+
+            api.on("error", function(error) {
+                console.error(dateFormat(new Date(), "dd mmm HH:MM:ss") + ' - [error] [node-red-contrib-netatmo-thermostat] getThermostatsData >' + error);
+            });
+
+            api.on("warning", function(warning) {
+                console.error(dateFormat(new Date(), "dd mmm HH:MM:ss") + ' - [warning] [node-red-contrib-netatmo-thermostat] getThermostatsData >' + warning);
+            });
+
         });
 
     }
