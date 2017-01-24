@@ -26,7 +26,8 @@
             name: {value:""},
             creds: {value:"",type:"NetatmoConfigNode"},
             thermpointmode: {value:"program"},
-            thermpointtemp: {value:""}
+            thermpointtemp: {value:""},
+            defaultendtime: {value: null}
         },
         inputs:1,
         outputs:0,
@@ -66,6 +67,17 @@
         <br/>If mode is set to <code>manual</code> and no temperature is set, an error is raised
         </p>
     </div>
+    <div class="form-row" style="border-top:1pt dotted gray;">
+        <p style="padding-top: 10px;">
+        <label for="node-input-defaultendtime"><i class="icon-tag"></i> End time</label>
+        <input type=text id="node-input-defaultendtime" placeholder="End time">
+        <br/>
+        <em>Note</em>: if no value set, the <code>manual</code> or <code>max</code> temperature will be set for
+        <br/> a time defined at your profile level. Otherwise, it will last the entered time.
+        <br/> Can also be set in the payload with the <code>payload.setpoint_endtime</code> variable.
+        <br/> If set in the payload, this input value will be ignored.
+
+    </div>
     <script>
     $(function(){
       $('#node-input-thermpointmode').on('change',function(){
@@ -90,4 +102,5 @@
         <li><code>setpoint_temp</code> (optional): the manual temperature to set. This parameter is considered only when the setpoint_mode is <code>manual</code>.
       </ul>
    </p>
+   <p>See <a href="https://dev.netatmo.com/dev/resources/technical/reference/thermostat/setthermpoint" target=_blank>https://dev.netatmo.com/dev/resources/technical/reference/thermostat/setthermpoint</a> for details</p>
 </script>

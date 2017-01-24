@@ -81,7 +81,12 @@ module.exports = function(RED) {
             }
 
 
-            console.log(dateFormat(new Date(), "dd mmm HH:MM:ss") + " - [info] [node-red-contrib-netatmo-thermostat] setThermpoint > " + msg.payload.setpoint_mode + " - " + msg.payload.setpoint_temp);
+            //Check the endtime is manual or max setpoint_endtime
+            if ( msg.payload.setpoint_endtime == null ) msg.payload.setpoint_endtime = config.defaultendtime;
+
+
+
+            console.log(dateFormat(new Date(), "dd mmm HH:MM:ss") + " - [info] [node-red-contrib-netatmo-thermostat] setThermpoint > " + msg.payload.setpoint_mode + " - " + msg.payload.setpoint_temp + " - " + msg.payload.setpoint_endtime);
 
             api.setThermpoint(msg.payload, function(err, status) {
               console.log(dateFormat(new Date(), "dd mmm HH:MM:ss") + " - [info] [node-red-contrib-netatmo-thermostat] setThermpoint > " + status);
