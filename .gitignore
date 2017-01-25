@@ -3,3 +3,6 @@ test.json
 
 #Ignore dependencies
 node_modules
+
+#Ignore the npm debug file
+npm-debug.log
