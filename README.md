@@ -4,8 +4,15 @@ A Netatmo thermostat node for Node-Red
 This project is more than inspired by the one from @[ssadams11](https://github.com/ssadams11): [ssadams11/node-red-contrib-netatmo](https://github.com/ssadams11/node-red-contrib-netatmo). Thank a lot for the initial help ! :)
 
 
+# Installation
 
-# Nodes information
+The installation is classical, using ```npm```:
+
+```npm i node-red-contrib-netatmo-thermostat```
+
+Restart then you ```node-red``` server and .... *voilà* !
+
+# Installed nodes
 
 ## Get thermostats data
 
