@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-netatmo-thermostat",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A node-red to interact with Netatmo thermostat",
   "main": "index.js",
   "repository": {
@@ -21,6 +21,13 @@
   "netatmo",
   "thermostat",
   "iot"
-],
-  "license": "MIT"
+  ],
+  "license": "MIT",
+  "node-red" : {
+    "nodes" : {
+      "netatmo_config_node": "netatmo_node_config_node.js",
+      "netatmo_get_thermostats": "netatmo_node_get_thermostats.js",
+      "netatmo_set_thermpoint": "netatmo_node_set_thermpoint.js"
+    }
+  }
 }
