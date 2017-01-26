@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-netatmo-thermostat",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A node-red to interact with Netatmo thermostat",
   "main": "index.js",
   "repository": {
@@ -16,5 +16,11 @@
     "dateformat": "^2.0.0",
     "netatmo": "^2.0.0"
   },
+  "keywords": [
+  "node-red",
+  "netatmo",
+  "thermostat",
+  "iot"
+]
   "license": "MIT"
 }
