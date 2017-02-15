@@ -10,7 +10,7 @@ The installation is classical, using ```npm```:
 
 ```npm i node-red-contrib-netatmo-thermostat```
 
-Restart then you ```node-red``` server and .... *voilà* !
+Restart then your ```node-red``` server and .... *voilà* !
 
 # Installed nodes
 
